@@ -1,5 +1,7 @@
+import { Container } from "./Styled";
+
 const Calculator = () => {
-  return <div>Calculator</div>;
+  return <Container />;
 };
 
 export default Calculator;
