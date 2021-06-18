@@ -47,16 +47,15 @@ const Calculator = () => {
   };
 
   const compute = () => {
-    // let result;
-    // let previousNumber = parseFloat(previous);
-    // let currentNumber = parseFloat(current);
+    let previousNumber = parseFloat(previous);
+    let currentNumber = parseFloat(current);
 
-    // if (isNaN(previousNumber) || isNaN(currentNumber)) return;
+    if (isNaN(previousNumber) || isNaN(currentNumber)) return;
 
-    if (operation === "÷") return previous / current;
-    if (operation === "×") return previous * current;
-    if (operation === "+") return previous + current;
-    if (operation === "-") return previous - current;
+    if (operation === "÷") return previousNumber / currentNumber;
+    if (operation === "×") return previousNumber * currentNumber;
+    if (operation === "+") return previousNumber + currentNumber;
+    if (operation === "-") return previousNumber - currentNumber;
   };
 
   return (
