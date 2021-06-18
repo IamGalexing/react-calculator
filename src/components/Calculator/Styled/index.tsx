@@ -36,7 +36,13 @@ export const Current = styled.div`
   font-size: 2.5rem;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{
+  gridSpan?: number;
+  operation?: boolean;
+  equal?: boolean;
+  control?: boolean;
+  period?: boolean;
+}>`
   pointer: pointer;
   font-size: 2rem;
   border: 1px outset white;

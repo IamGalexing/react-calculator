@@ -6,39 +6,39 @@ const Calculator = () => {
   const [current, setCurrent] = useState("");
   const [operation, setOperation] = useState("");
 
-  const appendValue = ({ target }) => {
-    const value = target.innerHTML;
+  const appendValue = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    const value = (e.target as Element).innerHTML;
     if (value === "." && current.includes(value)) return;
     setCurrent(current + value);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     return current.length <= 1
       ? setCurrent("")
       : setCurrent(current.slice(0, -1));
   };
 
-  const handleAllClear = () => {
+  const handleAllClear = (): void => {
     setCurrent("");
     setPrevious("");
     setOperation("");
   };
 
-  const handleOperation = ({ target }) => {
+  const handleOperation = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!current) return;
     if (previous) {
-      const value = compute().toString();
-      setPrevious(value);
+      const value = compute()?.toString();
+      value && setPrevious(value);
     } else {
       setPrevious(current);
     }
 
     setCurrent("");
-    setOperation(target.innerHTML);
+    setOperation((e.target as Element).innerHTML);
   };
 
   const equal = () => {
-    const value = compute().toString();
+    const value = compute()?.toString();
     if (value === undefined || value === null) return;
 
     setCurrent(value);
@@ -46,7 +46,7 @@ const Calculator = () => {
     setOperation("");
   };
 
-  const compute = () => {
+  const compute = (): number | undefined => {
     let previousNumber = parseFloat(previous);
     let currentNumber = parseFloat(current);
 
